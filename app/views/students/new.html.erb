@@ -1,13 +1,108 @@
-<h1><%= action_name.capitalize %> Student</h1>
-<%= form_with model: @student, local: true do |f| %>
-  <%= f.label :name %>
-  <%= f.text_field :name %>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title><%= action_name.capitalize %> Student</title>
+  <style>
+      /* General body styling */
+      body {
+          font-family: 'Arial', sans-serif;
+          background-color: #f4f7f6;
+          margin: 0;
+          padding: 20px;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          height: 100vh;
+      }
 
-  <%= f.label :subject %>
-  <%= f.text_field :subject %>
+      /* Container for the form */
+      .student-form-container {
+          background-color: white;
+          padding: 30px;
+          border-radius: 8px;
+          box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+          width: 100%;
+          max-width: 500px;
+      }
 
-  <%= f.label :marks %>
-  <%= f.number_field :marks %>
+      /* Heading styles */
+      h1 {
+          text-align: center;
+          color: #333;
+          margin-bottom: 20px;
+          font-size: 24px;
+      }
 
-  <%= f.submit %>
-<% end %>
+      /* Form label styles */
+      label {
+          display: block;
+          font-weight: bold;
+          margin-bottom: 8px;
+          color: #555;
+      }
+
+      /* Input field styles */
+      input[type="text"],
+      input[type="number"] {
+          width: 100%;
+          padding: 10px;
+          margin-bottom: 20px;
+          border: 1px solid #ccc;
+          border-radius: 5px;
+          font-size: 16px;
+          box-sizing: border-box;
+      }
+
+      input[type="text"]:focus,
+      input[type="number"]:focus {
+          border-color: #6c63ff;
+          outline: none;
+          box-shadow: 0 0 8px rgba(108, 99, 255, 0.3);
+      }
+
+      /* Submit button styles */
+      input[type="submit"] {
+          width: 100%;
+          padding: 10px;
+          background-color: #6c63ff;
+          color: white;
+          border: none;
+          border-radius: 5px;
+          cursor: pointer;
+          font-size: 16px;
+      }
+
+      input[type="submit"]:hover {
+          background-color: #5848c2;
+      }
+
+      /* Responsive design */
+      @media (max-width: 600px) {
+          .student-form-container {
+              padding: 20px;
+          }
+      }
+  </style>
+</head>
+<body>
+
+<div class="student-form-container">
+  <h1><%= action_name.capitalize %> Student</h1>
+  <%= form_with model: @student, local: true do |f| %>
+    <%= f.label :name, "Name" %>
+    <%= f.text_field :name, placeholder: "Enter student name" %>
+
+    <%= f.label :subject, "Subject" %>
+    <%= f.text_field :subject, placeholder: "Enter subject" %>
+
+    <%= f.label :marks, "Marks" %>
+    <%= f.number_field :marks, placeholder: "Enter marks" %>
+
+    <%= f.submit "Save Student" %>
+  <% end %>
+</div>
+
+</body>
+</html>

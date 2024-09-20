@@ -1,25 +1,141 @@
-<h1>Student List</h1>
-<table>
-  <thead>
-  <tr>
-    <th>Name</th>
-    <th>Subject</th>
-    <th>Marks</th>
-    <th>Actions</th>
-  </tr>
-  </thead>
-  <tbody>
-  <% @students.each do |student| %>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Student List</title>
+  <style>
+      /* General body styling */
+      body {
+          font-family: 'Arial', sans-serif;
+          background-color: #f4f7f6;
+          margin: 0;
+          padding: 20px;
+      }
+
+      /* Container for the table */
+      .student-container {
+          max-width: 800px;
+          margin: 0 auto;
+          background-color: white;
+          padding: 20px;
+          border-radius: 8px;
+          box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+      }
+
+      /* Heading styles */
+      h1 {
+          text-align: center;
+          color: #333;
+          margin-bottom: 20px;
+      }
+
+      /* Table styles */
+      table {
+          width: 100%;
+          border-collapse: collapse;
+          margin-bottom: 20px;
+      }
+
+      th, td {
+          padding: 12px 15px;
+          text-align: left;
+      }
+
+      thead th {
+          background-color: #6c63ff;
+          color: white;
+          font-weight: bold;
+      }
+
+      tbody tr:nth-child(even) {
+          background-color: #f2f2f2;
+      }
+
+      tbody tr:hover {
+          background-color: #f9f9f9;
+      }
+
+      td {
+          border-bottom: 1px solid #ddd;
+      }
+
+      /* Links styling */
+      a {
+          color: #6c63ff;
+          text-decoration: none;
+          font-weight: bold;
+      }
+
+      a:hover {
+          text-decoration: underline;
+      }
+
+      /* Add student button */
+      .add-student-btn {
+          display: inline-block;
+          background-color: #6c63ff;
+          color: white;
+          padding: 10px 15px;
+          border-radius: 5px;
+          text-decoration: none;
+          font-weight: bold;
+          text-align: center;
+      }
+
+      .add-student-btn:hover {
+          background-color: #5848c2;
+      }
+
+      /* Responsive design */
+      @media (max-width: 600px) {
+          .student-container {
+              padding: 10px;
+          }
+
+          table {
+              font-size: 14px;
+          }
+
+          th, td {
+              padding: 10px;
+          }
+
+          .add-student-btn {
+              padding: 8px 12px;
+          }
+      }
+  </style>
+</head>
+<body>
+
+<div class="student-container">
+  <h1>Student List</h1>
+  <table>
+    <thead>
     <tr>
-      <td><%= student.name %></td>
-      <td><%= student.subject %></td>
-      <td><%= student.marks %></td>
-      <td>
-        <%= link_to 'Edit', edit_student_path(student) %>
-        <%= link_to 'Delete', student_path(student), method: :delete, data: { confirm: "Are you sure?" } %>
-      </td>
+      <th>Name</th>
+      <th>Subject</th>
+      <th>Marks</th>
+      <th>Actions</th>
     </tr>
-  <% end %>
-  </tbody>
-</table>
-<%= link_to 'Add New Student', new_student_path %>
+    </thead>
+    <tbody>
+    <% @students.each do |student| %>
+      <tr>
+        <td><%= student.name %></td>
+        <td><%= student.subject %></td>
+        <td><%= student.marks %></td>
+        <td>
+          <%= link_to 'Edit', edit_student_path(student) %>
+        </td>
+      </tr>
+    <% end %>
+    </tbody>
+  </table>
+
+  <%= link_to 'Add New Student', new_student_path, class: 'add-student-btn' %>
+</div>
+
+</body>
+</html>
